@@ -99,7 +99,7 @@ export default function HealthScorePage() {
             <div className="rounded-xl p-6 shadow-sm" style={{ background: '#FFFBEA', border: '1.5px solid #EDD382' }}>
               <h3 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: '#6B6C8A' }}>6-Dimension Radar</h3>
               <RadarChart
-                data={Object.entries(result.dimensions as Record<string, { score: number }>).map(([k, v]) => ({
+                data={Object.entries((result.dimensions || {}) as Record<string, { score: number }>).map(([k, v]) => ({
                   dimension: k.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
                   score: v.score,
                   fullMark: 100,
@@ -109,7 +109,7 @@ export default function HealthScorePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {Object.values(result.dimensions as Record<string, { label: string; score: number; status: string; insight: string }>).map(dim => (
+            {Object.values((result.dimensions || {}) as Record<string, { label: string; score: number; status: string; insight: string }>).map(dim => (
               <ResultCard key={dim.label} title={dim.label} variant={dim.score >= 70 ? 'success' : dim.score >= 50 ? 'warning' : 'danger'}>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-2xl font-bold" style={{ color: '#FC9E4F' }}>{dim.score}</span>
@@ -122,7 +122,7 @@ export default function HealthScorePage() {
 
           <ResultCard title="Top 3 Action Priorities" icon="🎯">
             <div className="space-y-3">
-              {(result.top_priorities as { rank: number; action: string; impact: string; timeline: string }[]).map(p => (
+              {((result.top_priorities || []) as { rank: number; action: string; impact: string; timeline: string }[]).map(p => (
                 <div key={p.rank} className="flex gap-3">
                   <span className="font-bold text-lg w-6" style={{ color: '#FC9E4F' }}>#{p.rank}</span>
                   <div>
