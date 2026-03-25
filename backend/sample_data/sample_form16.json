@@ -1,0 +1,21 @@
+{
+  "gross_salary": 1800000,
+  "basic_salary": 720000,
+  "hra_received": 360000,
+  "special_allowance": 540000,
+  "lta": 50000,
+  "other_allowances": 130000,
+  "rent_paid": 240000,
+  "city_metro": true,
+  "section_80c_invested": 50000,
+  "section_80c_max": 150000,
+  "section_80d_paid": 15000,
+  "nps_contributed": 0,
+  "home_loan_interest": 0,
+  "missed_deductions": [
+    {"section": "80C", "shortfall": 100000, "description": "Can invest \u20b91L more in ELSS/PPF/NPS to maximize 80C limit"},
+    {"section": "80CCD(1B)", "shortfall": 50000, "description": "NPS contribution gives extra \u20b950K deduction beyond 80C limit"},
+    {"section": "80D", "shortfall": 10000, "description": "Health insurance premium \u2014 can claim up to \u20b925K"}
+  ],
+  "source": "sample"
+}

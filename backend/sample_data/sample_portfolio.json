@@ -1,0 +1,25 @@
+{
+  "holdings": [
+    {"fund_name": "Axis Bluechip Fund", "current_value": 450000, "invested": 350000, "plan": "regular", "units": 1250.5},
+    {"fund_name": "Parag Parikh Flexi Cap", "current_value": 320000, "invested": 240000, "plan": "direct", "units": 980.2},
+    {"fund_name": "Nippon India Small Cap", "current_value": 280000, "invested": 200000, "plan": "regular", "units": 750.8},
+    {"fund_name": "HDFC Mid-Cap Opportunities", "current_value": 190000, "invested": 160000, "plan": "regular", "units": 520.3}
+  ],
+  "transactions": [
+    {"date": "2021-01-10", "amount": -50000, "fund_name": "Axis Bluechip Fund", "type": "purchase"},
+    {"date": "2021-04-15", "amount": -50000, "fund_name": "Parag Parikh Flexi Cap", "type": "purchase"},
+    {"date": "2021-07-20", "amount": -40000, "fund_name": "Nippon India Small Cap", "type": "purchase"},
+    {"date": "2022-01-10", "amount": -50000, "fund_name": "Axis Bluechip Fund", "type": "purchase"},
+    {"date": "2022-06-15", "amount": -50000, "fund_name": "HDFC Mid-Cap Opportunities", "type": "purchase"},
+    {"date": "2022-09-20", "amount": -40000, "fund_name": "Parag Parikh Flexi Cap", "type": "purchase"},
+    {"date": "2023-01-10", "amount": -80000, "fund_name": "Axis Bluechip Fund", "type": "purchase"},
+    {"date": "2023-06-15", "amount": -50000, "fund_name": "Nippon India Small Cap", "type": "purchase"},
+    {"date": "2023-09-20", "amount": -60000, "fund_name": "HDFC Mid-Cap Opportunities", "type": "purchase"},
+    {"date": "2024-01-10", "amount": -80000, "fund_name": "Parag Parikh Flexi Cap", "type": "purchase"},
+    {"date": "2024-06-15", "amount": -70000, "fund_name": "Nippon India Small Cap", "type": "purchase"},
+    {"date": "2024-09-20", "amount": -50000, "fund_name": "Axis Bluechip Fund", "type": "purchase"},
+    {"date": "2025-01-15", "amount": 1240000, "fund_name": "TOTAL_CURRENT_VALUE", "type": "current_value"}
+  ],
+  "total_invested": 670000,
+  "total_current_value": 1240000
+}
