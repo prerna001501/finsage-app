@@ -7,29 +7,37 @@
 
 FinSage is built on a **5-agent pipeline architecture** where each agent has a single, well-defined responsibility. Agents communicate through structured data contracts — no agent interprets raw user input, and no agent makes financial calculations. This separation prevents hallucination, ensures regulatory compliance, and makes every output independently verifiable.
 
-```mermaid
-flowchart TD
-    Browser["🌐 USER BROWSER — React + Vite\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nHealth Score · FIRE · Tax · Portfolio · Life · Couple\nAgentPipeline UI — 4-step reasoning shown in real time"]
-
-    Browser -->|"HTTPS · Vercel proxy · no CORS"| A1
-
-    subgraph Pipeline["⚙️  FINSAGE PIPELINE ORCHESTRATOR — FastAPI · Python 3.11 · Render Cloud"]
-        direction LR
-        A1["📥 AGENT 1\nInput & Validation\n─────────────────\npdf_parser.py\nPydantic models\nSample data fallback"]
-        A2["🔢 AGENT 2\nQuantitative Analysis\n─────────────────\ntax_calculator.py\nxirr_calculator.py\nsip_projector.py"]
-        A3["📋 AGENT 3\nRegulatory Context\n─────────────────\nprompts/ directory\nIT Act sections\nSEBI norms"]
-        A4["🤖 AGENT 4\nAdvisory Intelligence\n─────────────────\nLlama 3.3 70B\nGroq API\ntemp = 0.1"]
-        A5["🛡️ AGENT 5\nCompliance Guardrail\n─────────────────\nSEBI disclaimer\nNo unlicensed advice\nUI + LLM layer"]
-
-        A1 -->|"normalized\nprofile dict"| A2
-        A2 -->|"facts_bundle\npre-computed numbers"| A3
-        A3 -->|"system_prompt\n+ user_message"| A4
-        A4 -->|"structured\nJSON advice"| A5
-    end
-
-    A4 <-->|"Groq SDK · ~500ms"| Groq["☁️ Groq Cloud — Free Tier\n━━━━━━━━━━━━━━━━━━━━━\nModel: llama-3.3-70b-versatile\nMeta Open-Source License"]
-
-    A5 -->|"combined response\n+ SEBI disclaimer"| Browser
+```
++-------------------------------------------------------------------------+
+|                        USER BROWSER (React/Vite)                        |
+|  Feature Pages: Health Score · FIRE · Tax · Portfolio · Life · Couple   |
+|  AgentPipeline UI -- shows users the 4-step reasoning in real time      |
++--------------------------------+----------------------------------------+
+                                 |  HTTPS / Vercel proxy (no CORS)
+                                 v
++-------------------------------------------------------------------------+
+|                    FINSAGE PIPELINE ORCHESTRATOR                        |
+|              FastAPI · 7 routers · Python 3.11 · Render cloud           |
+|                                                                         |
+|  +----------+   +--------------+   +---------------+   +------------+  |
+|  | AGENT 1  |-->|   AGENT 2    |-->|    AGENT 3    |-->|  AGENT 4   |  |
+|  |  Input & |   | Quantitative |   |  Regulatory   |   |  Advisory  |  |
+|  |Validation|   |   Analysis   |   |   Context     |   |    LLM     |  |
+|  |          |   |    Agent     |   |    Agent      |   |   Agent    |  |
+|  +----------+   +--------------+   +---------------+   +------------+  |
+|                                                               v         |
+|                       +-------------------------------+                 |
+|                       |  AGENT 5: Compliance Guard    |                 |
+|                       |  SEBI boundary enforcement    |                 |
+|                       +-------------------------------+                 |
++-------------------------------------------------------------------------+
+                                 |
+                                 v
+               +-----------------------------------+
+               |       Groq Cloud · Free Tier      |
+               |   llama-3.3-70b-versatile (Meta)  |
+               |       Open-Source License         |
+               +-----------------------------------+
 ```
 
 ---
