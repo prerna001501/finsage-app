@@ -3,8 +3,13 @@ import axios from 'axios'
 const isLocal = window.location.hostname === 'localhost'
 const api = axios.create({
   baseURL: isLocal ? 'http://localhost:8000' : '',
-  timeout: 60000,
+  timeout: 90000,  // 90s — allows Render free tier to wake up (~30-60s cold start)
 })
+
+// Wake up Render backend on app load (free tier spins down after 15min inactivity)
+if (!isLocal) {
+  api.get('/api/v1/health').catch(() => {})
+}
 
 export default api
 
