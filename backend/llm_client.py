@@ -19,7 +19,7 @@ def chat(system: str, user: str) -> str:
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ],
-        temperature=0.1,
+        temperature=0,
         max_tokens=8192,
     )
     return response.choices[0].message.content
